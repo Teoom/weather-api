@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+picture,
+source {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;;
+}
+
+body {  
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  background-image: var(--bg-linear-gradient);
+  background-size: cover;
+  background-attachment: fixed;
+}
