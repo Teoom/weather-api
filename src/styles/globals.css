@@ -39,3 +39,17 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+button:focus, input:focus {
+  outline: none;
+}

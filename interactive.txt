@@ -1,0 +1,5 @@
+Cмена темы: 
+	P: .switch > .switch-checkbox ~ .switch-text;
+
+Инпут поиска:
+	P: .search > .search-btn ~ search-city

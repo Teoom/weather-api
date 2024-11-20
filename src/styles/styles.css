@@ -3,37 +3,116 @@
   inline-size: 1345px;
 }
 
-
-.switch-label input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
+.nav {
+  display: flex;
+  align-items: start;
 }
 
 .switch-label {
+  position: relative;
   display: block;
-  inline-size: 100px;
-  block-size: 40px;
-  background-color: #D9D9D9;
   margin-block-end: 7px;
   border-radius: 40px;
-  position: relative;
+  background-color: #D9D9D9;
   cursor: pointer;
+  inline-size: 100px;
+  block-size: 40px;
+
 }
 
 .switch-label::after {
   content: "";
+  position: absolute;
+  border-radius: 30px;
+  font-size: 10px;
+  background-color: #111; 
+  transition: .5s;
   inline-size: 30px;
   block-size: 30px;
-  background-color: #111;
-  border-radius: 50%;
-  position: absolute;
   inset-block-start: 5px;
   inset-inline-end: 13px;
 }
 
+
+.switch-checkbox:checked + .switch-label::after {
+  transform: translateX(100%);
+  inset-inline-end: calc(100% - 13px);
+
+} 
+
+label:active:after {
+  inline-size: 74px;
+}
+
 .switch-text {
+  font-weight: 800;
   font-size: 18px;
   line-height: 1.5;
+}
+
+.search {
+  position: relative;
+  margin-inline-start: 72px;
+  margin-inline-end: 81px;
+}
+
+.search-city {
+  border: none;
+  border-radius: 40px;
+  padding: 20px 80px 14px 102px;
+  box-shadow: 0 0 2px 2px var(--bg-color);
+  background-color: var(--bg-color);
+  inline-size: 803px;
+  block-size: 62px;
+}
+
+.search-city::placeholder {
+  color: #ffffff60;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.search-btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  inset-block-start: 8px;
+  inset-inline-start: 33px;
+}
+
+.search-loupe::before {
+  content: "";
+  display: block;
+  background: url(../../images/loupe.svg) no-repeat center / cover;
+  inline-size: 40px;
+  block-size: 46px;
+  fill: #B7B7B7;
+}
+
+.location-btn {
+  position: relative;
+  background-color: #4cbb17;
+  padding: 14.5px 21px 14.5px 68px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.location-btn__text {
+  font-family: Poppins;
   font-weight: 800;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.location-btn__text::before {
+  content: "";
+  inline-size: 35px;
+  block-size: 35px;
+  background: url(../../images/location.svg) no-repeat center / cover;
+  display: block;
+  position: absolute;
+  inset-inline-start: 25px;
 }
