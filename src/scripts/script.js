@@ -1,25 +1,44 @@
-import  API__KEYS from "./variables.js";
+import '../styles/index.css'
 
-const { GEOCODDER__API } = API__KEYS
+import findLocation from "./findLocation.js";
 
 const getLocationBtn = document.querySelector(".location-btn")
+const cityName = document.querySelector(".city");
 
-getLocationBtn.addEventListener('click',  () => {
-  const geolocation = navigator.geolocation;
-  geolocation.getCurrentPosition(async (position) => {
-    console.log(position)
-    console.log(new Date().getTime())
-    const { latitude, longitude } = position.coords;
-    console.log(latitude, longitude)
-    
-    let data  = await fetch(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&format=json&api_key=${GEOCODDER__API}`)
-    console.log(await data.json())
+getLocationBtn.addEventListener('click', async () => {
 
-    let cor = await fetch(`https://geocode.maps.co/search?q=Krasnoyarsk&api_key=673da07d240d1824659150roze6743e`)
-    console.log(await cor.json())
-  })
+  
+  // findLocation()
+  const loc = findLocation();
+  console.log(loc)
+
 })
 
+
+// const objOfImage = {
+//   weather: {
+//     clear: '../images/clear 2.png',
+//     clouds: '../images/clear 2.png'
+//   },
+//   direction: {
+
+//   }
+// }
+
+
+// (function () {
+
+//   const imageWeatherNow = document.querySelector('.weather-now__img');
+//   //
+//   //  imageWeatherNow.src = objOfImage.weather.clear
+//   console.log(imageWeatherNow)
+
+
+
+
+
+
+// })()
 
 
 

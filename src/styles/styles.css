@@ -1,11 +1,13 @@
 .main {
   margin: 63px auto;
   inline-size: 1345px;
+  padding-block-end: 50px;
 }
 
 .nav {
   display: flex;
   align-items: start;
+  margin-block-end: 49px;
 }
 
 .switch-label {
@@ -13,11 +15,10 @@
   display: block;
   margin-block-end: 7px;
   border-radius: 40px;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   cursor: pointer;
   inline-size: 100px;
   block-size: 40px;
-
 }
 
 .switch-label::after {
@@ -25,20 +26,18 @@
   position: absolute;
   border-radius: 30px;
   font-size: 10px;
-  background-color: #111; 
-  transition: .5s;
+  background-color: #111;
+  transition: 0.5s;
   inline-size: 30px;
   block-size: 30px;
   inset-block-start: 5px;
   inset-inline-end: 13px;
 }
 
-
 .switch-checkbox:checked + .switch-label::after {
   transform: translateX(100%);
   inset-inline-end: calc(100% - 13px);
-
-} 
+}
 
 label:active:after {
   inline-size: 74px;
@@ -61,6 +60,9 @@ label:active:after {
   border-radius: 40px;
   padding: 20px 80px 14px 102px;
   box-shadow: 0 0 2px 2px var(--bg-color);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
   background-color: var(--bg-color);
   inline-size: 803px;
   block-size: 62px;
@@ -75,8 +77,8 @@ label:active:after {
 
 .search-btn {
   position: absolute;
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   cursor: pointer;
   inset-block-start: 8px;
   inset-inline-start: 33px;
@@ -85,18 +87,18 @@ label:active:after {
 .search-loupe::before {
   content: "";
   display: block;
-  background: url(../../images/loupe.svg) no-repeat center / cover;
+  fill: #b7b7b7;
+  background: url(../images/loupe.svg) no-repeat center / cover;
   inline-size: 40px;
   block-size: 46px;
-  fill: #B7B7B7;
 }
 
 .location-btn {
   position: relative;
-  background-color: #4cbb17;
-  padding: 14.5px 21px 14.5px 68px;
   border: none;
   border-radius: 40px;
+  padding: 14.5px 21px 14.5px 68px;
+  background-color: #4cbb17;
   cursor: pointer;
 }
 
@@ -109,10 +111,251 @@ label:active:after {
 
 .location-btn__text::before {
   content: "";
+  position: absolute;
+  display: block;
+  background: url(../images/location.svg) no-repeat center / cover;
   inline-size: 35px;
   block-size: 35px;
-  background: url(../../images/location.svg) no-repeat center / cover;
-  display: block;
-  position: absolute;
   inset-inline-start: 25px;
 }
+
+.weather {
+  display: flex;
+  gap: 55px;
+  margin-block-end: 50px;
+}
+
+.weather-city-info {
+  padding: 53px 107px 48px;
+  text-align: center;
+  inline-size: 510px;
+}
+
+.weather-city-info__title {
+  font-size: 36px;
+  line-height: 1.5;
+  margin-block-end: 26px;
+}
+
+.weather-city-info__time {
+  font-size: 96px;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.weather-city-info__day {
+  display: block;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 20;
+}
+
+.weather-now {
+  inline-size: 780px;
+  padding: 26px 8.6px 31px 24px;
+  display: flex;
+}
+
+.wather-now__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: fit-content;
+}
+
+.wather-now__info__degree {
+  font-size: 80px;
+  line-height: 1.5;
+  font-weight: 700;
+  background: linear-gradient(30deg, #fff, #ffffff00);
+  color: transparent;
+  background-clip: text;
+}
+
+.wather-now__info__degree-feel {
+  margin-block-start: -13.5px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #ffffff80;
+  background-clip: text;
+  margin-block-end: 25px;
+  align-self: start;
+}
+
+.wather-now__info__degree-feel > span {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.wather-now__info__sunrise {
+  margin-block-end: 10px;
+}
+
+.wather-now__info__sunrise,
+.wather-now__info__sunset {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.wather-now__info__sunrise-img,
+.wather-now__info__sunset-img {
+  inline-size: 48px;
+  block-size: 46px;
+}
+
+
+.wather-now__info__sunrise-info__title,
+.wather-now__info__sunset-info__title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.wather-now__info__sunrise-info__time,
+.wather-now__info__sunset-info__time {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  display: block;
+} 
+
+.weather-now__figure__img {
+  margin: 0 30px 0;
+}
+
+.weather-now__img {
+  inline-size: 262px;
+  block-size: 197px;
+  margin-block-end: 30px;
+}
+
+.weather-now__figure__title {
+  text-align: center;
+  font-size: 32px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.weather-now__description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 20px;
+}
+
+.weather-now__description-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-now__description__image {
+  inline-size: 60px;
+  aspect-ratio: 1/1;
+  margin-block-end: 10px;
+}
+
+.weather-now__description__info {
+  margin-block-end: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.weather-now__description__title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.forecast {
+  display: flex;
+  gap: 61px;
+}
+
+.forecast-daily {
+  inline-size: 414px;
+  padding: 18px 14px 2px 30px;
+}
+
+.forecast-daily__title {
+  text-align: center;
+  font-size: 32px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.forecast-daily__list-item {
+  display: flex;
+  align-items: center;
+  gap: 43px;
+}
+
+.forecast-daily__iamge {
+  inline-size: 60px;
+  aspect-ratio: 1/1;
+}
+
+.forecast-daily__temp-value {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.forecast-daily__time {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.forecast-hourly {
+  padding: 13px 62px 16px;
+  text-align: center;
+}
+
+.forecast-hourly__title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-block-end: 19px;
+}
+
+.forecast-hourly__list {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.forecast-hourly__item {
+  padding: 13px 35px 21px;
+  border-radius: 40px;
+  background-color: #373636;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.forecast-hourly__time {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.forecast-hourly__img,
+.forecast-hourly__direction {
+  inline-size: 60px;
+  aspect-ratio: 1/1;
+}
+
+.forecast-hourly__temp-value,
+.forecast-hourly__wind-speed {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+

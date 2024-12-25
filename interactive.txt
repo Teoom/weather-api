@@ -3,3 +3,9 @@ Cмена темы:
 
 Инпут поиска:
 	P: .search > .search-btn ~ search-city
+
+
+Город и время:
+	div: .weather-city-info > .weather-city-info__title 
+			 .weather-city-info > .weather-city-info__time + .weather-city-info__day
+

@@ -12,6 +12,11 @@ h5,
 h6,
 p {
   margin: 0;
+  padding: 0;
+}
+
+figure {
+  margin: 0;
 }
 
 ul {
@@ -24,6 +29,10 @@ picture,
 source {
   margin: 0;
   padding: 0;
+}
+
+img {
+  display: block;
 }
 
 html, body {
@@ -52,4 +61,10 @@ body {
 
 button:focus, input:focus {
   outline: none;
+}
+
+.block {
+  background-color: var(--bg-color);
+  border-radius: 30px;
+  box-shadow: 6px 6px 3px  #00000050;
 }
