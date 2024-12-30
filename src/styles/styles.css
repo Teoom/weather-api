@@ -278,7 +278,7 @@ label:active:after {
 
 .forecast-daily {
   inline-size: 414px;
-  padding: 18px 14px 2px 30px;
+  padding: 18px 4px 2px 13px;
 }
 
 .forecast-daily__title {

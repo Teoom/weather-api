@@ -1,45 +1,26 @@
 import '../styles/index.css'
 
-import findLocation from "./findLocation.js";
+
+import updateMainPage from "./findLocation.js";
+
 
 const getLocationBtn = document.querySelector(".location-btn")
-const cityName = document.querySelector(".city");
 
-getLocationBtn.addEventListener('click', async () => {
 
-  
-  // findLocation()
-  const loc = findLocation();
-  console.log(loc)
+
+
+getLocationBtn.addEventListener('click', () => {
+  const cityName = document.querySelector(".weather-city-info__title");
+  const elementOfTime = [...document.querySelector(".weather-city-info__time").childNodes].find(el => el.nodeName === "#text");
+  const elementOfData = document.querySelector(".weather-city-info__day");
+
+
+  updateMainPage({ cityName: cityName, time: elementOfTime, data: elementOfData });
 
 })
 
 
-// const objOfImage = {
-//   weather: {
-//     clear: '../images/clear 2.png',
-//     clouds: '../images/clear 2.png'
-//   },
-//   direction: {
-
-//   }
-// }
 
 
-// (function () {
-
-//   const imageWeatherNow = document.querySelector('.weather-now__img');
-//   //
-//   //  imageWeatherNow.src = objOfImage.weather.clear
-//   console.log(imageWeatherNow)
-
-
-
-
-
-
-// })()
-
-
-
+// const forecast = fetch(`http://api.weatherapi.com/v1/forecast.json?key=56c474504b9f45e7951170817243012&q=Krasnoyarsk&days=3&aqi=no&alerts=no`)
 

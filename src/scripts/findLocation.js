@@ -1,38 +1,72 @@
+export const namesOfDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+export const namesOfMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-async function success(position) {
-  const { longitude, latitude } = position.coords
+
+function success(element) {
+
+  return async (position) => {
+
+    const { longitude, latitude } = position.coords;
+
+    try {
+      const API__KEY = '56c474504b9f45e7951170817243012';
+      const URL = `http://api.weatherapi.com/v1/forecast.json?q=${latitude},${longitude}&key=${API__KEY}`;
+      // const resposne =  await fetch(`https://api-bdc.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+
+      const resposne = await fetch(URL);
+
+      if (resposne.ok) {
+        console.log(await resposne.json())
+        // const location = await resposne.json();
+
+        // const timeZone = location.localityInfo.informative.filter(item => {
+     
+        //     if(item.description === "time zone") {
+        //       return true;
+        //     }
+
+        // })[0].name;
+
+        // const [date, time] = new Date().toLocaleString("ru", { timeZone: timeZone }).split(' ');
+
+        // let [year, month, day] = date.split(".").reverse();
+        // year = year.replace(",", "");
+
+        // const [hours, minutes, seconds] = time.split(":");
+  
+        // const indexOfDay = new Date(year, month - 1, day, hours, minutes, seconds).getDay();
+
+        // 53.024263 , 158.643504 KAMCHATKA
+        // 51.5085 , -0.12574 LONDONG
+        // 55.7522, 37.6156 MOSCOW
+        // element.cityName.textContent = location.city;
+
+        // element.time.textContent = `${hours}:${minutes}`;
+        // element.time.parentElement.dateTime = `${year}-${month}-${day} ${time}`;
+
+        // element.data.textContent = `${namesOfDay[indexOfDay]}, ${day} ${namesOfMonths[month-1]}`;
 
 
-  try {
-    let response = await fetch(`https://api-bdc.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
-    
-    if(response.ok) {
-      const location = await response.json();
-      console.log(location)
-      return response;
-    } else {
-      throw new Error("error")
+
+      } else {
+        throw new Error("There was some error. Please try again later.")
+      }
+    } catch (error) {
+      alert(error)
     }
-  } catch (error) {
-    alert("Error")
-    console.log(error)
   }
-
-
-
 }
+
+
 
 
 function error() {
   alert('We can`t determine your geolocation :(');
 }
 
-export default  function findLocation() {
- const location =  navigator.geolocation.getCurrentPosition(success, error, {
-    enableHighAccuracy: true,
-    timeout: 3600,
-    maximumAge: 1000
-  })
+export default function updateMainPage(elements) {
 
-  return location;
+  navigator.geolocation.getCurrentPosition(success(elements), error, {
+    enableHighAccuracy: true,
+  })
 }
