@@ -9,14 +9,17 @@ function success(element) {
     const { longitude, latitude } = position.coords;
 
     try {
-      const API__KEY = '56c474504b9f45e7951170817243012';
-      const URL = `http://api.weatherapi.com/v1/forecast.json?q=${latitude},${longitude}&key=${API__KEY}`;
-      // const resposne =  await fetch(`https://api-bdc.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+      const WEATHER__API__KEY = '56c474504b9f45e7951170817243012';
+      const weatherURL = `https://api.weatherapi.com/v1/forecast.json?q=${latitude},${longitude}&key=${WEATHER__API__KEY}`;
+      const geocoderURL = `https://api-bdc.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+     
+      const resposne = await Promise.all([fetch(weatherURL), fetch(geocoderURL)]);
 
-      const resposne = await fetch(URL);
-
-      if (resposne.ok) {
-        console.log(await resposne.json())
+      if (resposne[0].ok && resposne[1].ok) {
+        const weather = await resposne[0].json();
+        const geocoder = await resposne[1].json();
+        console.log(weather)
+        console.log(geocoder)
         // const location = await resposne.json();
 
         // const timeZone = location.localityInfo.informative.filter(item => {
