@@ -1,7 +1,7 @@
 import '../styles/index.css'
 
-
-import updateMainPage from "./findLocation.js";
+import {findElementByClass} from "./findElement"
+import updateWeather from "./findLocation";
 
 
 const getLocationBtn = document.querySelector(".location-btn")
@@ -10,17 +10,62 @@ const getLocationBtn = document.querySelector(".location-btn")
 
 
 getLocationBtn.addEventListener('click', () => {
-  const cityName = document.querySelector(".weather-city-info__title");
-  const elementOfTime = [...document.querySelector(".weather-city-info__time").childNodes].find(el => el.nodeName === "#text");
-  const elementOfData = document.querySelector(".weather-city-info__day");
+  // ROW 1 COLUMN 1
+  const locationInfo = findElementByClass('weather-city-info');
+  const cityName = findElementByClass('weather-city-info__title', locationInfo);
+  const elementOfTime = [...findElementByClass("weather-city-info__time", locationInfo).childNodes].find(el => el.nodeName === "#text");
+  const elementOfDate = findElementByClass("weather-city-info__day", locationInfo);
+
+  // ROW 1 COLUMN 2
+  const currentWeatherBlock = findElementByClass("weather-now");
+  const currentTemp = findElementByClass("wather-now__info__degree", currentWeatherBlock);
+  const currentFeelsTemp = findElementByClass("wather-now__info__degree-feel span", currentWeatherBlock);
+  const sunriseTime = findElementByClass("wather-now__info__sunrise-info__time", currentWeatherBlock);
+  const sunsetTime = findElementByClass("wather-now__info__sunset-info__time", currentWeatherBlock);
+  const humidity = findElementByClass("humidity .weather-now__description__info", currentWeatherBlock);
+  const windSpeed = findElementByClass("wind-speed .weather-now__description__info", currentWeatherBlock);
+  const pressure = findElementByClass("pressure .weather-now__description__info", currentWeatherBlock);
+  const uv = findElementByClass("UV .weather-now__description__info", currentWeatherBlock);
+  const weatherImg = findElementByClass("weather-now__img", currentWeatherBlock);
+  const figcaption = findElementByClass("weather-now__figure__title", currentWeatherBlock);
 
 
-  updateMainPage({ cityName: cityName, time: elementOfTime, data: elementOfData });
+  // ROW 2 COLUMN 1
+  const dailyForecastList = findElementByClass("forecast-daily__list");
+
+
+  // ROW 2 COLUMN 2
+  const hourlyForecastList = findElementByClass("forecast-hourly__list");
+
+  const elements = {
+    locationInfo: {
+      cityName,
+      time: elementOfTime,
+      date: elementOfDate
+
+    },
+    currentWeather: {
+      temp: currentTemp,
+      feelsTemp: currentFeelsTemp,
+      sunrise: sunriseTime,
+      sunset: sunsetTime,
+      weatherImg,
+      figcaption,
+      humidity,
+      windSpeed,
+      pressure,
+      uv
+    },
+    daily: dailyForecastList,
+    hourly: hourlyForecastList
+  }
+
+  updateWeather(elements);
 
 })
 
 
 
 
-// const forecast = fetch(`http://api.weatherapi.com/v1/forecast.json?key=56c474504b9f45e7951170817243012&q=Krasnoyarsk&days=3&aqi=no&alerts=no`)
+
 
