@@ -1,7 +1,4 @@
 import { renderItem } from "./renderItem";
-import sunny from "../images/clear 2.png"
-
-
 
 const namesOfDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const namesOfMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -93,7 +90,7 @@ function success(elements) {
         elements.daily.append(item);
       })
       
-   
+      console.log(elements.hourly)
 
       } else {
         throw new Error("There was some error. Please try again later.")
