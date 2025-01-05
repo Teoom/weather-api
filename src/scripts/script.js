@@ -1,14 +1,20 @@
 import '../styles/index.css'
 
 import {findElementByClass} from "./findElement"
-import updateWeather from "./findLocation";
+import updateWeather from "./updateWeather";
 
+
+
+const formSearch = findElementByClass("search-form");
+
+formSearch.addEventListener("submit", e => {
+  e.preventDefault();
+  const inputCity = formSearch.elements.city;
+  console.log(inputCity.value);
+  inputCity.value = "";
+})
 
 const getLocationBtn = document.querySelector(".location-btn")
-
-
-
-
 getLocationBtn.addEventListener('click', () => {
   // ROW 1 COLUMN 1
   const locationInfo = findElementByClass('weather-city-info');

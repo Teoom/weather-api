@@ -1,3 +1,5 @@
+import northern from "../images/northern.png"
+
 export function renderItem(classNames, content, parentClass) {
   const item = document.createElement("li");
   item.className = classNames.li;
@@ -23,15 +25,16 @@ export function renderItem(classNames, content, parentClass) {
 
   } else {
 
-    const imgDirection = document.createElement("img");
-    imgDirection.className = classNames.imgDircetion;
-    imgDirection.src = content.direction;
+    const windDegree = document.createElement("img");
+    windDegree.className = classNames.windDegree;
+    windDegree.src = northern;
+    windDegree.style.rotate = `${content.windDegree}deg`;
 
     const spanWindSpeed = document.createElement("span");
     spanWindSpeed.className = classNames.windSpeed;
     spanWindSpeed.textContent = content.windSpeed;
 
-    item.append(time, imgWeather, spanTemp, imgDirection, spanWindSpeed);
+    item.append(time, imgWeather, spanTemp, windDegree, spanWindSpeed);
   }
 
   return item;

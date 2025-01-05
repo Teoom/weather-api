@@ -27,7 +27,7 @@ const namesOfMonths = [
 function success(elements) {
   return async (position) => {
     const { longitude, latitude } = position.coords;
-
+//55.957726, 92.380148
     try {
       const WEATHER__API__KEY = "56c474504b9f45e7951170817243012";
       const weatherURL = `https://api.weatherapi.com/v1/forecast.json?q=${latitude},${longitude}&days=6&key=${WEATHER__API__KEY}`;
@@ -74,9 +74,8 @@ function success(elements) {
         elements.locationInfo.cityName.textContent = geocoder.city;
         elements.locationInfo.time.textContent = `${hours}:${minutes}`;
         elements.locationInfo.time.parentElement.dateTime = `${year}-${month}-${day} ${time}`;
-        elements.locationInfo.date.textContent = `${
-          namesOfDay[indexOfDay]
-        }, ${day} ${namesOfMonths[month - 1]}`;
+        elements.locationInfo.date.textContent = `${namesOfDay[indexOfDay]
+          }, ${day} ${namesOfMonths[month - 1]}`;
 
         const { temp_c, feelslike_c, humidity, wind_kph, pressure_mb, uv } =
           weather.current;
@@ -116,9 +115,8 @@ function success(elements) {
             },
             {
               src: `http:${forecast.day.condition.icon}`,
-              time: `${namesOfDay[date.getDay()]}, ${date.getDate()} ${
-                namesOfMonths[date.getMonth()]
-              }`,
+              time: `${namesOfDay[date.getDay()]}, ${date.getDate()} ${namesOfMonths[date.getMonth()]
+                }`,
               dateTime: forecast.date,
               temp: `${avgtemp_c.toFixed()}°C`,
             },
@@ -129,11 +127,10 @@ function success(elements) {
         });
 
         // Hourly
-        console.log(elements.hourly);
         const hourlyForecast = weather.forecast.forecastday[0].hour.filter(
           (data) => {
             const times = ["12:00", "15:00", "18:00", "21:00", "00:00"];
-            if(times.includes(data.time.split(" ")[1])) {
+            if (times.includes(data.time.split(" ")[1])) {
               return true;
             }
           }
@@ -143,18 +140,39 @@ function success(elements) {
         // hourlyForecast[hourlyForecast.length] = midnight[0];
         // console.log(hourlyForecast)
 
-        console.log(hourlyForecast)
         hourlyForecast.sort((a, b) => {
-          console.log(a)
-          if(a.time.includes("00:00")) {
-            console.log('aa')
-            return 1;
-          } else {
-            console.log('aa')
+          if (b.time.includes("00:00")) {
             return -1;
           }
+          else {
+            return 0;
+          }
         })
-       
+        elements.hourly.textContent = "";
+        hourlyForecast.forEach(forecast => {
+          const item = renderItem(
+            {
+              li: "forecast-hourly__item",
+              time: "forecast-hourly__time",
+              temp: "forecast-hourly__temp-value",
+              imgWeather: "forecast-hourly__img",
+              windDegree: "forecast-hourly__direction",
+              windSpeed: "forecast-hourly__wind-speed"
+            },
+            {
+              src: `http:${forecast.condition.icon}`,
+              temp: `${forecast.temp_c.toFixed()}°C`,
+              windDegree: forecast.wind_degree.toFixed(),
+              windSpeed: `${forecast.wind_kph.toFixed()}km/h`,
+              time: forecast.time.split(" ")[1],
+              dateTime: forecast.time
+            },
+            elements.hourly.className
+          );
+
+          elements.hourly.append(item);
+        })
+
       } else {
         throw new Error("There was some error. Please try again later.");
       }

@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark light" />
-    <link rel="icon" href="<%=require('./images/favicon.svg')%>" type="image/svg+xml">
+    <link
+      rel="icon"
+      href="<%=require('./images/favicon.svg')%>"
+      type="image/svg+xml"
+    />
     <link rel="apple-touch-icon" href="<%=require('./images/favicon.png')%>" />
 
     <title>WEATHER</title>
@@ -23,14 +27,17 @@
           <p class="switch-text" style="font-family: Poppins">Dark Mode</p>
         </div>
         <div class="search">
-          <button class="search-btn">
-            <span class="search-loupe"></span>
-          </button>
-          <input
-            type="text"
-            class="search-city"
-            placeholder="Search for your preffered city..."
-          />
+          <form name="search-city" class="search-form">
+            <button type="submit" class="search-btn">
+              <span class="search-loupe"></span>
+            </button>
+            <input
+              name="city"
+              type="text"
+              class="search-city"
+              placeholder="Search for your preffered city..."
+            />
+          </form>
         </div>
         <button class="location-btn">
           <span class="location-btn__text">Current Location</span>
@@ -47,49 +54,85 @@
         <div class="weather-now block">
           <div class="wather-now__info">
             <p class="wather-now__info__degree">24&deg;C</p>
-            <p class="wather-now__info__degree-feel">Feels like: 
+            <p class="wather-now__info__degree-feel">
+              Feels like:
               <span>22&deg;C</span>
             </p>
-          
+
             <div class="wather-now__info__sunrise">
-                  <img src="<%=require('./images/sunrise-white 1.png')%>" alt="Sunrise icon" class="wather-now__info__sunrise-img">
-                  <div class="wather-now__info__sunrise-info">
-                    <p class="wather-now__info__sunrise-info__title">Sunrise</p>
-                    <time datetime="06:37" class="wather-now__info__sunrise-info__time">06:37 AM</time>
-                  </div>
+              <img
+                src="<%=require('./images/sunrise-white 1.png')%>"
+                alt="Sunrise icon"
+                class="wather-now__info__sunrise-img"
+              />
+              <div class="wather-now__info__sunrise-info">
+                <p class="wather-now__info__sunrise-info__title">Sunrise</p>
+                <time
+                  datetime="06:37"
+                  class="wather-now__info__sunrise-info__time"
+                  >06:37 AM</time
+                >
+              </div>
             </div>
 
             <div class="wather-now__info__sunset">
-              <img src="<%=require('./images/sunset-white 1.png')%>" alt="Sunset icon" class="wather-now__info__sunset-img">
+              <img
+                src="<%=require('./images/sunset-white 1.png')%>"
+                alt="Sunset icon"
+                class="wather-now__info__sunset-img"
+              />
               <div class="wather-now__info__sunset-info">
                 <p class="wather-now__info__sunset-info__title">Sunset</p>
-                <time datetime="20:37" class="wather-now__info__sunset-info__time">20:37 AM</time>
+                <time
+                  datetime="20:37"
+                  class="wather-now__info__sunset-info__time"
+                  >20:37 AM</time
+                >
               </div>
             </div>
-         
           </div>
           <figure class="weather-now__figure__img">
-            <img src="https://yastatic.net/weather/i/icons/funky/light/skc_d.svg" aria-hidden="true" class="weather-now__img">
+            <img
+              src="https://yastatic.net/weather/i/icons/funky/light/skc_d.svg"
+              aria-hidden="true"
+              class="weather-now__img"
+            />
             <figcaption class="weather-now__figure__title">Sunny</figcaption>
           </figure>
           <div class="weather-now__description">
             <article class="weather-now__description-article humidity">
-              <img src="  <%=require('./images/humidity 1.png')%>" aria-hidden="true" class="weather-now__description__image">         
+              <img
+                src="  <%=require('./images/humidity 1.png')%>"
+                aria-hidden="true"
+                class="weather-now__description__image"
+              />
               <p class="weather-now__description__info">41%</p>
               <h3 class="weather-now__description__title">Humidity</h3>
             </article>
             <article class="weather-now__description-article wind-speed">
-              <img src="  <%=require('./images/wind 1.png')%>" aria-hidden="true" class="weather-now__description__image">         
+              <img
+                src="  <%=require('./images/wind 1.png')%>"
+                aria-hidden="true"
+                class="weather-now__description__image"
+              />
               <p class="weather-now__description__info">2km/h</p>
               <h3 class="weather-now__description__title">Wind Speed</h3>
             </article>
             <article class="weather-now__description-article pressure">
-              <img src="  <%=require('./images/pressure-white 1.png')%>" aria-hidden="true" class="weather-now__description__image">         
+              <img
+                src="  <%=require('./images/pressure-white 1.png')%>"
+                aria-hidden="true"
+                class="weather-now__description__image"
+              />
               <p class="weather-now__description__info">997hPa</p>
               <h3 class="weather-now__description__title">Pressure</h3>
             </article>
             <article class="weather-now__description-article UV">
-              <img src="  <%=require('./images/uv-white 1.png')%>" aria-hidden="true" class="weather-now__description__image">         
+              <img
+                src="  <%=require('./images/uv-white 1.png')%>"
+                aria-hidden="true"
+                class="weather-now__description__image"
+              />
               <p class="weather-now__description__info">8</p>
               <h3 class="weather-now__description__title">UV</h3>
             </article>
@@ -98,80 +141,156 @@
       </div>
       <div class="forecast">
         <div class="forecast-daily block">
-          <h2 class="forecast-daily__title">
-            5 Days Forecast:
-          </h2>
+          <h2 class="forecast-daily__title">5 Days Forecast:</h2>
           <ul class="forecast-daily__list">
             <li class="forecast-daily__list-item">
-              <img src="  <%=require('./images/clouds 1.png')%>" aria-hidden="true" class="forecast-daily__image">
+              <img
+                src="  <%=require('./images/clouds 1.png')%>"
+                aria-hidden="true"
+                class="forecast-daily__image"
+              />
               <span class="forecast-daily__temp-value">20°C</span>
-              <time datetime="2024-09-01" class="forecast-daily__time">Friday, 1 Sep</time>
+              <time datetime="2024-09-01" class="forecast-daily__time"
+                >Friday, 1 Sep</time
+              >
             </li>
             <li class="forecast-daily__list-item">
-              <img src="  <%=require('./images/mist 1.png')%>" aria-hidden="true" class="forecast-daily__image">
+              <img
+                src="  <%=require('./images/mist 1.png')%>"
+                aria-hidden="true"
+                class="forecast-daily__image"
+              />
               <span class="forecast-daily__temp-value">22°C</span>
-              <time datetime="2024-09-02" class="forecast-daily__time">Saturday, 2 Sep</time>
+              <time datetime="2024-09-02" class="forecast-daily__time"
+                >Saturday, 2 Sep</time
+              >
             </li>
             <li class="forecast-daily__list-item">
-              <img src="  <%=require('./images/clear 2.png')%>" aria-hidden="true" class="forecast-daily__image">
+              <img
+                src="  <%=require('./images/clear 2.png')%>"
+                aria-hidden="true"
+                class="forecast-daily__image"
+              />
               <span class="forecast-daily__temp-value">27°C</span>
-              <time datetime="2024-09-03" class="forecast-daily__time">Sunday, 3 Sep</time>
+              <time datetime="2024-09-03" class="forecast-daily__time"
+                >Sunday, 3 Sep</time
+              >
             </li>
             <li class="forecast-daily__list-item">
-              <img src="  <%=require('./images/drizzle 1.png')%>" aria-hidden="true" class="forecast-daily__image">
+              <img
+                src="  <%=require('./images/drizzle 1.png')%>"
+                aria-hidden="true"
+                class="forecast-daily__image"
+              />
               <span class="forecast-daily__temp-value">18°C</span>
-              <time datetime="2024-09-04" class="forecast-daily__time">Monday, 4 Sep</time>
+              <time datetime="2024-09-04" class="forecast-daily__time"
+                >Monday, 4 Sep</time
+              >
             </li>
             <li class="forecast-daily__list-item">
-              <img src="  <%=require('./images/rain 1.png')%>" aria-hidden="true" class="forecast-daily__image">
+              <img
+                src="  <%=require('./images/rain 1.png')%>"
+                aria-hidden="true"
+                class="forecast-daily__image"
+              />
               <span class="forecast-daily__temp-value">16°C</span>
-              <time datetime="2024-09-05" class="forecast-daily__time">Tuesday, 5 Sep</time>
+              <time datetime="2024-09-05" class="forecast-daily__time"
+                >Tuesday, 5 Sep</time
+              >
             </li>
-
           </ul>
         </div>
         <div class="forecast-hourly block">
           <h3 class="forecast-hourly__title">Hourly Forecast:</h3>
           <ul class="forecast-hourly__list">
-              <li class="forecast-hourly__item">
-                <time datetime="12:00:00" class="forecast-hourly__time">12:00</time>
-                <img src="<%=require('./images/clear 2.png')%>" aria-hidden="true" class="forecast-hourly__img">
-                <span class="forecast-hourly__temp-value">26°C</span>
-                <img src="<%=require('./images/southwestern.png')%>" aria-hidden="true" class="forecast-hourly__direction">
-                <span class="forecast-hourly__wind-speed">3km/h</span>
-              </li>
-              <li class="forecast-hourly__item">
-                <time datetime="15:00:00" class="forecast-hourly__time">15:00</time>
-                <img src="<%=require('./images/clear 2.png')%>" aria-hidden="true" class="forecast-hourly__img">
-                <span class="forecast-hourly__temp-value">27°C</span>
-                <img src="<%=require('./images/southwestern.png')%>" aria-hidden="true" class="forecast-hourly__direction">
-                <span class="forecast-hourly__wind-speed">2km/h</span>
-              </li> 
-              <li class="forecast-hourly__item">
-                <time datetime="18:00:00" class="forecast-hourly__time">18:00</time>
-                <img src="<%=require('./images/clouds 1.png')%>" aria-hidden="true" class="forecast-hourly__img">
-                <span class="forecast-hourly__temp-value">27°C</span>
-                <img src="<%=require('./images/southwestern.png')%>" aria-hidden="true" class="forecast-hourly__direction">
-                <span class="forecast-hourly__wind-speed">2km/h</span>
-              </li>
-              <li class="forecast-hourly__item">
-                <time datetime="21:00:00" class="forecast-hourly__time">21:00</time>
-                <img src="<%=require('./images/clouds 1.png')%>" aria-hidden="true" class="forecast-hourly__img">
-                <span class="forecast-hourly__temp-value">25°C</span>
-                <img src="<%=require('./images/southwestern.png')%>" aria-hidden="true" class="forecast-hourly__direction">
-                <span class="forecast-hourly__wind-speed">3km/h</span>
-              </li>
-              <li class="forecast-hourly__item">
-                <time datetime="00:00:00" class="forecast-hourly__time">00:00</time>
-                <img src="<%=require('./images/clear 2.png')%>" aria-hidden="true" class="forecast-hourly__img">
-                <span class="forecast-hourly__temp-value">22°C</span>
-                <img src="<%=require('./images/southwestern.png')%>" aria-hidden="true" class="forecast-hourly__direction">
-                <span class="forecast-hourly__wind-speed">3km/h</span>
-              </li>
+            <li class="forecast-hourly__item">
+              <time datetime="12:00:00" class="forecast-hourly__time"
+                >12:00</time
+              >
+              <img
+                src="<%=require('./images/clear 2.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__img"
+              />
+              <span class="forecast-hourly__temp-value">26°C</span>
+              <img
+                src="<%=require('./images/northern.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__direction"
+              />
+              <span class="forecast-hourly__wind-speed">3km/h</span>
+            </li>
+            <li class="forecast-hourly__item">
+              <time datetime="15:00:00" class="forecast-hourly__time"
+                >15:00</time
+              >
+              <img
+                src="<%=require('./images/clear 2.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__img"
+              />
+              <span class="forecast-hourly__temp-value">27°C</span>
+              <img
+                src="<%=require('./images/northern.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__direction"
+              />
+              <span class="forecast-hourly__wind-speed">2km/h</span>
+            </li>
+            <li class="forecast-hourly__item">
+              <time datetime="18:00:00" class="forecast-hourly__time"
+                >18:00</time
+              >
+              <img
+                src="<%=require('./images/clouds 1.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__img"
+              />
+              <span class="forecast-hourly__temp-value">27°C</span>
+              <img
+                src="<%=require('./images/northern.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__direction"
+              />
+              <span class="forecast-hourly__wind-speed">2km/h</span>
+            </li>
+            <li class="forecast-hourly__item">
+              <time datetime="21:00:00" class="forecast-hourly__time"
+                >21:00</time
+              >
+              <img
+                src="<%=require('./images/clouds 1.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__img"
+              />
+              <span class="forecast-hourly__temp-value">25°C</span>
+              <img
+                src="<%=require('./images/northern.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__direction"
+              />
+              <span class="forecast-hourly__wind-speed">3km/h</span>
+            </li>
+            <li class="forecast-hourly__item">
+              <time datetime="00:00:00" class="forecast-hourly__time"
+                >00:00</time
+              >
+              <img
+                src="<%=require('./images/clear 2.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__img"
+              />
+              <span class="forecast-hourly__temp-value">22°C</span>
+              <img
+                src="<%=require('./images/northern.png')%>"
+                aria-hidden="true"
+                class="forecast-hourly__direction"
+              />
+              <span class="forecast-hourly__wind-speed">3km/h</span>
+            </li>
           </ul>
         </div>
       </div>
     </main>
-
   </body>
 </html>

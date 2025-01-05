@@ -226,6 +226,7 @@ label:active:after {
 }
 
 .weather-now__img {
+  margin: 0 auto;
   inline-size: 262px;
   block-size: 197px;
   margin-block-end: 30px;
@@ -353,7 +354,7 @@ label:active:after {
 }
 
 .forecast-hourly__direction {
-  rotate: 30deg;
+  scale: .8;
 }
 
 .forecast-hourly__temp-value,
