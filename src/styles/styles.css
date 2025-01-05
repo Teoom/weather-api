@@ -288,10 +288,10 @@ label:active:after {
 }
 
 .forecast-daily__list-item {
-  align-items: center;
-  display: grid;
-  grid-template-columns: 60px 84px 100fr;
-  column-gap: 30px;
+ display: grid;
+ grid-template-columns: min-content 80px 1fr;
+ column-gap: 25px;
+ align-items: center;
 }
 
 .forecast-daily__image {
