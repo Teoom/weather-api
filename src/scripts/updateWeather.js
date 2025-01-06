@@ -24,34 +24,53 @@ const namesOfMonths = [
   "Dec",
 ];
 
-function success(elements) {
+function success(elements, city) {
   return async (position) => {
+
     const { longitude, latitude } = position.coords;
-//55.957726, 92.380148
+    //55.957726, 92.380148
     try {
+      // WEATHER DATA
       const WEATHER__API__KEY = "56c474504b9f45e7951170817243012";
-      const weatherURL = `https://api.weatherapi.com/v1/forecast.json?q=${latitude},${longitude}&days=6&key=${WEATHER__API__KEY}`;
-      const geocoderURL = `https://api-bdc.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+      const weatherURL = `https://api.weatherapi.com/v1/forecast.json?q=${city ? city : `${latitude},${longitude}`}&days=6&key=${WEATHER__API__KEY}`;
+      // const geocoderURL = `https://api-bdc.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
 
-      const resposne = await Promise.all([
-        fetch(weatherURL),
-        fetch(geocoderURL),
-      ]);
+      const responseWeatherData = await fetch(weatherURL);
+      let weather = "";
 
-      if (resposne[0].ok && resposne[1].ok) {
-        const weather = await resposne[0].json();
-        const geocoder = await resposne[1].json();
-        console.log(weather);
-        console.log(geocoder);
 
-        const timeZone = geocoder.localityInfo.informative.filter((item) => {
-          if (item.description === "time zone") {
-            return true;
-          }
-        })[0].name;
+      // TRANSLATE CITY NAME IN ENGLISH
+      let translate = "";
+      if (responseWeatherData.ok) {
+        weather = await responseWeatherData.json();
+
+        const translateURL = 'https://google-translate113.p.rapidapi.com/api/v1/translator/text';
+        const options = {
+          method: 'POST',
+          headers: {
+            'x-rapidapi-key': '2f28d44073mshad6f6a61a18367bp1a0b52jsn7dba885c1c32',
+            'x-rapidapi-host': 'google-translate113.p.rapidapi.com',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'auto',
+            to: 'en',
+            text: `${weather.location.name}`
+          })
+        }
+
+        const resposneTranslate = await fetch(translateURL, options)
+        translate = await resposneTranslate.json();
+
+      } else {
+        throw new Error("Weather data was not received")
+      }
+
+
+      if ("trans" in translate) {
 
         const [date, time] = new Date()
-          .toLocaleString("ru", { timeZone: timeZone })
+          .toLocaleString("ru", { timeZone: weather.location.tz_id })
           .split(" ");
 
         let [year, month, day] = date.split(".").reverse();
@@ -71,7 +90,7 @@ function success(elements) {
         // 53.024263 , 158.643504 KAMCHATKA
         // 51.5085 , -0.12574 LONDONG
         // 55.7522, 37.6156 MOSCOW
-        elements.locationInfo.cityName.textContent = geocoder.city;
+        elements.locationInfo.cityName.textContent = translate.trans;
         elements.locationInfo.time.textContent = `${hours}:${minutes}`;
         elements.locationInfo.time.parentElement.dateTime = `${year}-${month}-${day} ${time}`;
         elements.locationInfo.date.textContent = `${namesOfDay[indexOfDay]
@@ -186,8 +205,8 @@ function error() {
   alert("We can`t determine your geolocation :(");
 }
 
-export default function updateWeather(elements) {
-  navigator.geolocation.getCurrentPosition(success(elements), error, {
+export default function updateWeather(elements, city) {
+  navigator.geolocation.getCurrentPosition(success(elements, city), error, {
     enableHighAccuracy: true,
   });
 }

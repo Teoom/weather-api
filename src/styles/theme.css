@@ -1,0 +1,10 @@
+.light-theme {
+  --bg-color: #D9D9D9;
+  --bg-linear-gradient: linear-gradient(to right bottom, #ffffff 12%, #466173 100%);
+  --text-color: #000;
+  --placeholder-text-color: #292929;
+  --bg-hourly-item: #F88508;
+  --temp-gradient: linear-gradient(30deg, #292929 30%, #ffffff);
+  --feels-like-color: #29292980;
+  --search-input-color: #292929;
+}

@@ -47,6 +47,8 @@ body {
   background-image: var(--bg-linear-gradient);
   background-size: cover;
   background-attachment: fixed;
+  color: var(--text-color);
+  transition: color .5s;
 }
 
 .visually-hidden {

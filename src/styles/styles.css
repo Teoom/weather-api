@@ -66,10 +66,11 @@ label:active:after {
   background-color: var(--bg-color);
   inline-size: 803px;
   block-size: 62px;
+  color: var(--search-input-color);
 }
 
 .search-city::placeholder {
-  color: #ffffff60;
+  color: var(--placeholder-text-color);
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
@@ -167,7 +168,7 @@ label:active:after {
   font-size: 80px;
   line-height: 1.5;
   font-weight: 700;
-  background: linear-gradient(30deg, #fff, #ffffff00);
+  background: var(--temp-gradient);
   color: transparent;
   background-clip: text;
 }
@@ -177,7 +178,7 @@ label:active:after {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.5;
-  color: #ffffff80;
+  color: var(--feels-like-color);
   background-clip: text;
   margin-block-end: 25px;
   align-self: start;
@@ -333,7 +334,7 @@ label:active:after {
 .forecast-hourly__item {
   padding: 13px 35px 21px;
   border-radius: 40px;
-  background-color: #373636;
+  background-color: var(--bg-hourly-item);
   display: flex;
   flex-direction: column;
   align-items: center;

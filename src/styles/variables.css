@@ -1,5 +1,11 @@
 :root {
   --bg-color: #444;
   --bg-linear-gradient: linear-gradient(to left top, #9E00  12%, #444444 100%);
+  --text-color: #fff;
+  --placeholder-text-color: #ffffff60;
+  --bg-hourly-item: #373636;
+  --temp-gradient: linear-gradient(30deg, #fff, #ffffff00);
+  --feels-like-color: #ffffff80;
+  --search-input-color: #fff;
 }
 
